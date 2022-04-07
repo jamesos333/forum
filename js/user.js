@@ -1,20 +1,15 @@
 class User {
-    constructor (id, fName, lName, email, username, password) {
+    constructor (id, username, email, birthday, password) {
         this.userId = id;
-        this.firstName = fName;
-        this.lastName = lName;
         this.username = username;
-        this.password = password;
         this.email = email;
+        this.birthday = birthday;
+        this.password = password;
     }
 
     //getters
-    getFirstName() {
-        return this.firstName;
-    }
-
-    getLastName() {
-        return this.lastName;
+    getId(){
+        return this.userId;
     }
 
     getUsername() {
@@ -25,24 +20,25 @@ class User {
         return this.email;
     }
 
+    getBirthday() {
+        return this.birthday;
+    }
+
     //setters
-    setFirstName(name) {
-        this.firstName = name;
-    }
-
-    setLastName(name) {
-        this.lastName = name;
-    }
-
-    setUsername() {
+    setUsername(username) {
         this.username = username;
     }
 
-    setPassword() {
+    setPassword(password) {
         this.password = password;
+    }
+
+    setEmail(email) {
+        this.email = email;
+    }
+
+    setBirthday(birthday) {
+        this.birthday = birthday;
     }
     
 }
-
-const user = new User(12345, "Joe", "Mama", "joemama333");
-console.log( user.getFirstName() );
