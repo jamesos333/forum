@@ -88,10 +88,13 @@ body {
     margin-top: 20px;
 }
 
-/* card effect for posts */
+/* for post preivew on forum page */
 .postcondensed {
     background-color: rgba(240, 240, 240, 0.842);
     padding: 10px;
+    padding-left: 50px;
+    border: 2px solid black;
+    box-shadow: 0px 0px 5px black;
     margin-top: 20px;
 }
 
@@ -144,7 +147,6 @@ form {
     margin-right: auto;
     padding-right: 22%;
     padding-left: -22%;
-    
     text-align: left;
 }
 
@@ -162,4 +164,11 @@ input {
     height: 20px;
     flex: 0 0 200px;
     margin-left: 10px;
+}
+
+.titletext {
+    text-align: center;
+    padding-top: 50px;
+    color: #ffffff;
+    text-decoration: underline;
 }

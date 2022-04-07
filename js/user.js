@@ -1,3 +1,4 @@
+//the user datatype for user data
 class User {
     constructor (id, username, email, birthday, password) {
         this.userId = id;
