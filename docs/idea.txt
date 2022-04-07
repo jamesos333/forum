@@ -1,0 +1,1 @@
+At the moment i think i am going to create a simple forum. Where users can make threads and other users can reply to threads, along with this i would have to make a moderation account system too. I'm still fleshing it out but thats what i am thinking at the moment.
