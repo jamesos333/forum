@@ -4,5 +4,26 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "name": "forum",
+  "description": "Forum Project for Web Development",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesos333/forum.git"
+  },
+  "author": "James O'Sullivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesos333/forum/issues"
+  },
+  "homepage": "https://github.com/jamesos333/forum#readme"
 }

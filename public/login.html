@@ -6,10 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="styles/main.css">
-    <script defer src="js/main.js"></script>
-    <script defer src="js/user.js"></script>
-    <script defer src="js/login.js"></script>
+    <link rel="stylesheet" href="main.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <title>HorrorCentral | Login</title>
 </head>
@@ -20,30 +17,30 @@
 
     <div class="row">
 
-            <div class="card">
-                <form action="#">
-                    <h2> Login Below </h2>
-
-                    <table class="centertable">
-                        <tr>
-                            <td> <label for="username">Username</label> </td>
-                            <td> <input type="text" id="username" name="username"><br> </td>
-                        </tr>
-                        <tr>
-                            <td> <label for="password">Password</label> </td>
-                            <td> <input type="password" id="password" name="password"> </td>
-                        </tr>
-                    </table>
-                    <br>
-                    <input type="submit" id="login" value="Login">
-
-                </form>
-
+        <div class="card">
+            <form id="login-form">
+                <h2> Login Below </h2>
+                <table class="centertable">
+                    <tr>
+                        <td> <label for="username">Username</label> </td>
+                        <td> <input type="text" id="username" name="username"><br> </td>
+                    </tr>
+                    <tr>
+                        <td> <label for="password">Password</label> </td>
+                        <td> <input type="password" id="password" name="password"> </td>
+                    </tr>
+                </table>
+                <br>
+                <input type="submit" value="Login">
+                <p class="error"></p>
+            </form>
         </div>
     </div>
 
     <div id="footer"></div>
 
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/user-script.js"></script>
 </body>
 
 </html>

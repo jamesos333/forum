@@ -6,10 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="styles/main.css">
-    <script defer src="js/main.js"></script>
-    <script defer src="js/user.js"></script>
-    <script defer src="js/register.js"></script>
+    <link rel="stylesheet" href="main.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <title>HorrorCentral | Register</title>
 </head>
@@ -21,7 +18,7 @@
 
     <div class="row">
         <div class="card">
-            <form action="#">
+            <form id="reg-form">
 
                 <h2> Signup Below </h2>
 
@@ -42,19 +39,19 @@
                         <td> <label for="password">Password</label> </td>
                         <td> <input type="password" id="password" name="password"><br> </td>
                     </tr>
-                    <tr>
-                        <td> <label for="passwordcheck">Repeat Password</label> </td>
-                        <td> <input type="password" id="passwordcheck" name="passwordcheck"><br> </td>
-                    </tr>
                 </table>
                 <br>
-                <input type="submit" id="register" value="register">
+                <input type="submit" id="submit" value="Register">
+                <p class="error"></p>
 
             </form>
         </div>
     </div>
 
     <div id="footer"></div>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/user-script.js"></script>
 
 </body>
 
