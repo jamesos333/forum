@@ -1,16 +1,17 @@
-//adds jquery
-var script = document.createElement('script');
-script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
 
-//adds navbar to page
-$(function () {
-    $("#navbar").load("elements/navbar.html");
-});
+//adds footer to all pages
+const footer = document.querySelector('footer');
+footer.innerHTML = await (await fetch('elements/footer.html')).text();
+//adds header to all pages
+const nav = document.querySelector('nav');
+nav.innerHTML = await (await fetch('elements/navbar.html')).text();
 
-//adds navbar to page
-$(function () {
-    $("#footer").load("elements/footer.html");
-});
+//customizes header if user is logged in
+if(getCurrentUser()) {
+  document.getElementById("login").outerHTML = '<a id="user" href="user.html"></a>';
+  document.getElementById("user").innerHTML = "hello, " + getCurrentUser().userName;
+  document.getElementById("register").outerHTML = '<a id="logout" >Logout</a>';
+}
 
 // Fetch method implementation:
 export async function fetchData(url = '', data = {}, methodType) {
@@ -51,5 +52,5 @@ if(logoutBtn) logoutBtn.addEventListener('click', logout)
 
 export function logout() {
   removeCurrentUser();
-  window.location.href = "login.html";
+  location.reload();
 }
