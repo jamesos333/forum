@@ -17,12 +17,12 @@
     <div class="row">
 
         <div class="postbox">
-            <form action="#">
+            <form id="thread-box">
                 <h2> New Thread </h2>
                 <table class="centertable">
                     <tr>
-                        <td> <label for="posttitle">Title</label> </td>
-                        <td> <textarea id="body" name="body" rows="2" cols="48" wrap="soft"></textarea><br> </td>
+                        <td> <label for="title">Title</label> </td>
+                        <td> <textarea id="title" name="title" rows="2" cols="48" wrap="soft"></textarea><br> </td>
                     </tr>
                     <tr>
                         <td> <label for="body">Body</label> </td>
@@ -30,7 +30,8 @@
                     </tr>
                 </table>
                 <br>
-                <input type="submit" id="login" value="Login">
+                <input type="submit" value="Post">
+                <p class="error"></p>
             </form>
         </div>
 
@@ -39,32 +40,16 @@
             <div class="titletext">
                 <h1>Current Threads</h1>
             </div>
-            <div class="postcondensed">
-                <h2><a href="threadexample.html">My favorite animal ever, i love this thing</a></h2>
-                <h5>USERNAME | April 8th, 2022</h5>
-            </div>
 
+            <threads></threads>
 
-            <div class="postcondensed">
-                <h2><a href="threadexample.html">My favorite animal ever, i love this thing</a></h2>
-                <h5>USERNAME | April 8th, 2022</h5>
-            </div>
-
-
-            <div class="postcondensed">
-                <h2><a href="threadexample.html">My favorite animal ever, i love this thing</a></h2>
-                <h5>USERNAME | April 8th, 2022</h5>
-            </div>
-
-
-            <div class="postcondensed">
-                <h2><a href="threadexample.html">My favorite animal ever, i love this thing</a></h2>
-                <h5>USERNAME | April 8th, 2022</h5>
-            </div>
         </div>
     </div>
 
     <footer></footer>
+
+    <script type="module" src="js/post-script.js"></script>
+    <script type="module" src="js/build-thread-banner.js"></script>
     <script type="module" src="js/main.js"></script>
 
 </body>

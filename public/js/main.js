@@ -1,10 +1,10 @@
 
 //adds footer to all pages
 const footer = document.querySelector('footer');
-footer.innerHTML = await (await fetch('elements/footer.html')).text();
+footer.innerHTML = await (await fetch('/elements/footer.html')).text();
 //adds header to all pages
 const nav = document.querySelector('nav');
-nav.innerHTML = await (await fetch('elements/navbar.html')).text();
+nav.innerHTML = await (await fetch('/elements/navbar.html')).text();
 
 //customizes header if user is logged in
 if(getCurrentUser()) {
@@ -35,6 +35,27 @@ export async function fetchData(url = '', data = {}, methodType) {
   }
 }
 
+export async function getData(url = '', methodType) {
+  const response = await fetch(`http://localhost:3000${url}`, {
+    method: methodType, // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  });
+  if(response.ok) {
+    return await response.json(); // parses JSON response into native JavaScript objects
+  } else {
+    throw await response.json();
+  }
+}
+
+//functions for user
 export function setCurrentUser(user) {
   localStorage.setItem('user', JSON.stringify(user));
 }
