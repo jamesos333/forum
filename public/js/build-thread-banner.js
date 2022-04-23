@@ -22,12 +22,10 @@ getData('/threads/', "GET")
 
 //builds the thread elements on the board
 function buildThreads(allThreads) {
-
     //makes the amount of threads but blank
     for( let i = 0; i < allThreads.length; i++ ){
         threads.innerHTML += template;
     }
-
     //fills in the blank threads with the info
     var titles = document.querySelectorAll('[id="thread-title"]');
     var usernames = document.querySelectorAll('[id="username"]');
@@ -38,5 +36,4 @@ function buildThreads(allThreads) {
         //adds in the username / date line
         usernames[usernames.length-i-1].innerHTML = allThreads[i].user + " | " + allThreads[i].date;
     }
-
 }

@@ -31,16 +31,17 @@
                 </table>
                 <br>
                 <input type="submit" value="Post">
+                <p class="error"></p>
             </form>
         </div>
 
         <div class="middlecolumn">
 
             <div class="topcard">
-                    <h2>My favorite animal ever i love this thing</h2>
-                    <h5>USERNAME | April 2nd, 2022</h5>
+                    <h2><a id="thread-title">TITLE</a></h2>
+                    <h5><a id="thread-username">USERNAME | DATE</a></h5>
                     <img src="/images/postimagetest.jpg" class="postimg" alt="postimage">
-                    <p>hello everyone i'm just sharing how much i like this thing, please be nice thank you!</p>
+                    <p><a id="thread-body">BODY</a></p>
             </div>
 
             <div class="card">
@@ -105,6 +106,7 @@
 
     <script type="module" src="/js/main.js"></script>
     <script type="module" src="/js/post-script.js"></script>
+    <script type="module" src="/js/build-thread.js"></script>
 
 </body>
 

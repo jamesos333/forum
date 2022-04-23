@@ -30,6 +30,24 @@ router
     }
   })
 
+  .post('/newusername', (req, res) => {
+    try {
+      const user = User.newUsername(req.body);
+      res.send({...user, password: undefined})
+    } catch(error) {
+      res.status(401).send({message: error.message});
+    }
+  })
+
+  .post('/newpassword', (req, res) => {
+    try {
+      const user = User.newPassword(req.body);
+      res.send({...user, password: undefined})
+    } catch(error) {
+      res.status(401).send({message: error.message});
+    }
+  })
+
   .delete('/delete', (req, res) => {
     try {
       User.deleteUser(req.body.userId);

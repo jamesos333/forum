@@ -13,7 +13,7 @@ const threads = [
     body: "hello guys pls help very urgent i'm at my girlfriends house meeting her family i rlly messed up bad this time i shouldnt have had that taco bell oh god what am i gonna do please help",
     user: "joe",
     date: "04/09/2022",
-    replies: null
+    replies: []
   }
 ]
 
@@ -32,9 +32,20 @@ function makeThread(thread) {
   return newThread;
 }
 
+function getThread(id) {
+  //console.log( threads[id.body.id] );
+  return threads[id.body.id];
+}
+
+function addReply(reply) {
+  //console.log( threads[id.body.id] );
+  threads[reply.threadId].replies.push( reply.postId );
+  return threads[reply.threadId].replies;
+}
+
 // for formatting the date
 function formatDate(date) {
   return (date.getMonth()+1)+'/'+date.getDate() +'/'+ date.getFullYear(); 
 }
 
-module.exports = { getThreads, makeThread };
+module.exports = { getThreads, makeThread, getThread, addReply };

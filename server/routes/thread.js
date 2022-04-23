@@ -12,9 +12,27 @@ router
         }
     })
 
+    .post('/getthread', (req, res) => {
+        try {
+            const thread = Thread.getThread(req);
+            res.send(thread);
+        } catch (err) {
+            res.status(401).send({ message: err.message });
+        }
+    })
+
     .post('/newthread', (req, res) => {
         try {
             const thread = Thread.makeThread(req.body);
+            res.send({ ...thread })
+        } catch (error) {
+            res.status(401).send({ message: error.message });
+        }
+    })
+
+    .post('/addreply', (req, res) => {
+        try {
+            const thread = Thread.addReply(req.body);
             res.send({ ...thread })
         } catch (error) {
             res.status(401).send({ message: error.message });

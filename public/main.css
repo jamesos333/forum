@@ -151,11 +151,10 @@ form {
 }
 
 label {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    text-align: center;
-    width: 350px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    text-align: right;
     line-height: 26px;
     margin-bottom: 10px;
 }

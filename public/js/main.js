@@ -7,8 +7,8 @@ const nav = document.querySelector('nav');
 nav.innerHTML = await (await fetch('/elements/navbar.html')).text();
 
 //customizes header if user is logged in
-if(getCurrentUser()) {
-  document.getElementById("login").outerHTML = '<a id="user" href="user.html"></a>';
+if (getCurrentUser()) {
+  document.getElementById("login").outerHTML = '<a id="user" href="/profile.html"></a>';
   document.getElementById("user").innerHTML = "hello, " + getCurrentUser().userName;
   document.getElementById("register").outerHTML = '<a id="logout" >Logout</a>';
 }
@@ -28,7 +28,7 @@ export async function fetchData(url = '', data = {}, methodType) {
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data) // body data type must match "Content-Type" header
   });
-  if(response.ok) {
+  if (response.ok) {
     return await response.json(); // parses JSON response into native JavaScript objects
   } else {
     throw await response.json();
@@ -48,7 +48,7 @@ export async function getData(url = '', methodType) {
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
   });
-  if(response.ok) {
+  if (response.ok) {
     return await response.json(); // parses JSON response into native JavaScript objects
   } else {
     throw await response.json();
@@ -69,7 +69,7 @@ export function getCurrentUser() {
 }
 
 export const logoutBtn = document.getElementById("logout");
-if(logoutBtn) logoutBtn.addEventListener('click', logout)
+if (logoutBtn) logoutBtn.addEventListener('click', logout)
 
 export function logout() {
   removeCurrentUser();

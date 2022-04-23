@@ -53,8 +53,24 @@ function deleteUser(userId) {
   console.log(users)
 }
 
+function newUsername(data) {
+
+  let i = users.map((user) => user.userId).indexOf(data.userId);
+  users[i].userName = data.username;
+  console.log( users[i] );
+  return users[i];
+}
+
+function newPassword(data) {
+
+  let i = users.map((user) => user.userId).indexOf(data.userId);
+  users[i].password = data.password;
+  console.log( users[i] );
+  return users[i];
+}
+
 function userExists(username) {
   return users.filter((u) => u.userName === username);
 }
 
-module.exports = { getUsers, login, register, deleteUser };
+module.exports = { getUsers, login, register, deleteUser, newUsername, newPassword };
