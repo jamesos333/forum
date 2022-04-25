@@ -21,7 +21,7 @@ threadImg.addEventListener("click", function (i) {
 });
 
 // gets a specific thread
-fetchData('/threads/getthread/', { id: threadId - 1 }, "POST")
+fetchData('/threads/getthread/', { id: threadId }, "POST")
   .then((data) => {
     if (!data.message) {
       buildPage(data);

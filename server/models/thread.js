@@ -25,6 +25,7 @@ function makeThread(thread) {
   postNum++;
   const newThread = {
     threadId: postNum,
+    threadNum: threads[threads.length - 1].threadId + 1,
     title: thread.title,
     body: thread.body,
     user: thread.user,
@@ -35,9 +36,11 @@ function makeThread(thread) {
   return newThread;
 }
 
-function getThread(id) {
+function getThread(data) {
   //console.log( threads[id.body.id] );
-  return threads[id.body.id];
+  var tmpId = parseInt( data.body.id );
+  let i = threads.map((threads) => threads.threadId).indexOf(tmpId);
+  return threads[i];
 }
 
 function deleteThread(threadId) {
