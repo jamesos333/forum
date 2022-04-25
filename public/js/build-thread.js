@@ -5,9 +5,9 @@ import { fetchData, getData, getCurrentUser, setCurrentUser, removeCurrentUser }
 const repliesLocation = document.querySelector('replies');
 const template = await (await fetch('/elements/post.html')).text();
 
-//gets the thread number by referencing the url
-var url = window.location.pathname;
-var threadId = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
+//gets the thread number by referencing the url tags
+const urlParams = new URLSearchParams( window.location.search );
+const threadId = urlParams.get('id');
 
 
 var threadImg = document.getElementById("thread-image");

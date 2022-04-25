@@ -14,7 +14,6 @@ let getPosts = () => posts;
 
 function makePost(data) {
     postNum++;
-    console.log(postNum);
     const newPost = {
         postId: postNum,
         title: data.title,

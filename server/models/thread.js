@@ -29,8 +29,9 @@ function makeThread(thread) {
     title: thread.title,
     body: thread.body,
     user: thread.user,
+    image: "/images/postimagetest2.jpg",
     date: formatDate(new Date()),
-    replies: null
+    replies: []
   }
   threads.push(newThread);
   return newThread;
