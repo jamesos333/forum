@@ -13,8 +13,10 @@ const posts = [
 let getPosts = () => posts;
 
 function makePost(data) {
+    postNum++;
+    console.log(postNum);
     const newPost = {
-        postId: posts[posts.length - 1].postId + 1,
+        postId: postNum,
         title: data.title,
         body: data.body,
         user: data.user,

@@ -9,6 +9,17 @@ const template = await (await fetch('/elements/post.html')).text();
 var url = window.location.pathname;
 var threadId = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
 
+
+var threadImg = document.getElementById("thread-image");
+// enlarges main image if clicked on
+threadImg.addEventListener("click", function (i) {
+  if (threadImg.classList.contains("postimg-click")) {
+    threadImg.classList.remove('postimg-click');
+  } else {
+    threadImg.classList.add('postimg-click');
+  }
+});
+
 // gets a specific thread
 fetchData('/threads/getthread/', { id: threadId - 1 }, "POST")
   .then((data) => {

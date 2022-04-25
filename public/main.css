@@ -74,11 +74,16 @@ body {
 }
 
 /* formatting for post images */
-.postimg {
-    max-width: 200px;
+.postimg-thumb {
+    max-width: 400px;
     height: auto;
     margin: 5px;
     filter: saturate(8) grayscale(75%);
+}
+.postimg-click {
+    max-width: 1200px;
+    height: auto;
+    margin: 5px;
 }
 
 /* card effect for posts */

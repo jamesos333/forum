@@ -6,6 +6,9 @@ const userRoutes = require('./server/routes/user');
 const threadRoutes = require('./server/routes/thread');
 const postRoutes = require('./server/routes/posts');
 
+// global post number
+global.postNum = 3;
+
 app.use(express.json()); //To parse JSON bodies (Applicable for Express 4.16+)
 
 app.use(express.static(__dirname + "/public"));
