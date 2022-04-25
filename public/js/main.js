@@ -5,12 +5,20 @@ footer.innerHTML = await (await fetch('/elements/footer.html')).text();
 //adds header to all pages
 const nav = document.querySelector('nav');
 nav.innerHTML = await (await fetch('/elements/navbar.html')).text();
+//gets which tab is current
+var url = window.location.pathname;
+var currentPage = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
 
-//customizes header if user is logged in
+// customizes header if user is logged in
 if (getCurrentUser()) {
-  document.getElementById("login").outerHTML = '<a id="user" href="/profile.html"></a>';
+  document.getElementById("login").outerHTML = '<a id="user" href="/user.html"></a>';
   document.getElementById("user").innerHTML = "hello, " + getCurrentUser().userName;
   document.getElementById("register").outerHTML = '<a id="logout" >Logout</a>';
+}
+
+// sets current page to active
+if( (url.split("/").length)-1 == 1 ) {
+  document.getElementById(currentPage).classList.add('active');
 }
 
 // Fetch method implementation:
@@ -73,5 +81,5 @@ if (logoutBtn) logoutBtn.addEventListener('click', logout)
 
 export function logout() {
   removeCurrentUser();
-  location.reload();
+  window.location.href = "/index.html";
 }

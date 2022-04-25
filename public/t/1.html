@@ -22,11 +22,15 @@
                 <table class="centertable">
                     <tr>
                         <td> <label for="title">Title</label> </td>
-                        <td> <textarea id="title" name="title" rows="2" cols="48" wrap="soft"></textarea><br> </td>
+                        <td> <textarea id="title" name="title" rows="2" cols="48" wrap="soft" required></textarea><br> </td>
                     </tr>
                     <tr>
                         <td> <label for="body">Body</label> </td>
-                        <td> <textarea id="body" name="body" rows="4" cols="48" wrap="soft"></textarea> </td>
+                        <td> <textarea id="body" name="body" rows="4" cols="48" wrap="soft" required></textarea> </td>
+                    </tr>
+                    <tr>
+                        <td> <label for="img">Image</label> </td>
+                        <td> <input type="file" id="img" name="img" accept="image/*"><br> </td>
                     </tr>
                 </table>
                 <br>
@@ -38,66 +42,16 @@
         <div class="middlecolumn">
 
             <div class="topcard">
+                <div class="postspacing">
                     <h2><a id="thread-title">TITLE</a></h2>
-                    <h5><a id="thread-username">USERNAME | DATE</a></h5>
-                    <img src="/images/postimagetest.jpg" class="postimg" alt="postimage">
-                    <p><a id="thread-body">BODY</a></p>
+                    <h3><a id="thread-id">#THREADID</a></h3>
+                </div>
+                <h5><a id="thread-username">USERNAME | DATE</a></h5>
+                <img src="" class="postimg" id="thread-image" alt="postimage">
+                <p><a id="thread-body">BODY</a></p>
             </div>
 
-            <div class="card">
-                <h2>I HATE THIS THING THAT YOU LIKE</h2>
-                <h5>USERNAME | April 8th, 2022</h5>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui nostrum at perferendis, soluta earum
-                    dolorem reiciendis aperiam expedita. Beatae cum nam pariatur unde numquam nihil dolore laboriosam
-                    saepe sed amet?Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci voluptate autem,
-                    porro illum nam aperiam labore quaerat ipsam, iste vitae repudiandae voluptates quibusdam tempore
-                    inventore accusantium voluptatibus amet suscipit animi. Lorem ipsum dolor, sit amet consectetur
-                    adipisicing elit. Delectus cupiditate ab consequatur repellat, nesciunt commodi possimus assumenda,
-                    odio nihil, unde vitae numquam corporis doloremque? Quia eligendi exercitationem voluptatem nulla
-                    minima.</p>
-            </div>
-
-            <div class="card">
-                <h2>I ABSOLUTELY LOATHE THIS THING THAT YOU LIKE</h2>
-                <h5>USERNAME | April 13th, 2022</h5>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui nostrum at perferendis, soluta earum
-                    dolorem reiciendis aperiam expedita. Beatae cum nam pariatur unde numquam nihil dolore laboriosam
-                    saepe sed amet?Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci voluptate autem,
-                    porro illum nam aperiam labore quaerat ipsam, iste vitae repudiandae voluptates quibusdam tempore
-                    inventore accusantium voluptatibus amet suscipit animi. Lorem ipsum dolor, sit amet consectetur
-                    adipisicing elit. Delectus cupiditate ab consequatur repellat, nesciunt commodi possimus assumenda,
-                    odio nihil, unde vitae numquam corporis doloremque? Quia eligendi exercitationem voluptatem nulla
-                    minima.</p>
-            </div>
-
-            <div class="card">
-                <h2>I CANNOT STAND THIS THING THAT YOU LIKE, HERES AN IMAGE TO PROVE IT</h2>
-                <h5>USERNAME | April 11th, 2022</h5>
-                <img src="/images/postimagetest1.jpg" class="postimg" alt="postimage">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, culpa amet! Non nemo distinctio,
-                    ab voluptas itaque eos nulla, modi, vitae aliquam hic quis dolor quos perferendis aliquid cum
-                    veniam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui nostrum at perferendis, soluta
-                    earum dolorem reiciendis aperiam expedita. Beatae cum nam pariatur unde numquam nihil dolore
-                    laboriosam saepe sed amet?Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-                    voluptate autem, porro illum nam aperiam labore quaerat ipsam, iste vitae repudiandae voluptates
-                    quibusdam tempore inventore accusantium voluptatibus amet suscipit animi. Lorem ipsum dolor, sit
-                    amet consectetur adipisicing elit. Delectus cupiditate ab consequatur repellat, nesciunt commodi
-                    possimus assumenda, odio nihil, unde vitae numquam corporis doloremque? Quia eligendi exercitationem
-                    voluptatem nulla minima.</p>
-            </div>
-
-            <div class="card">
-                <h2>I DESPISE THIS THING THAT YOU LIKE</h2>
-                <h5>USERNAME | April 13th, 2022</h5>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui nostrum at perferendis, soluta earum
-                    dolorem reiciendis aperiam expedita. Beatae cum nam pariatur unde numquam nihil dolore laboriosam
-                    saepe sed amet?Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci voluptate autem,
-                    porro illum nam aperiam labore quaerat ipsam, iste vitae repudiandae voluptates quibusdam tempore
-                    inventore accusantium voluptatibus amet suscipit animi. Lorem ipsum dolor, sit amet consectetur
-                    adipisicing elit. Delectus cupiditate ab consequatur repellat, nesciunt commodi possimus assumenda,
-                    odio nihil, unde vitae numquam corporis doloremque? Quia eligendi exercitationem voluptatem nulla
-                    minima.</p>
-            </div>
+            <replies></replies>
 
         </div>
     </div>

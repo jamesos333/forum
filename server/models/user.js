@@ -1,20 +1,20 @@
 const users = [
   {
-    userId: 12345,
+    userId: 1,
+    userName: "admin",
+    password: "admin",
+    email: "test@test.com",
+    birthday: "06/23/2000"
+  },
+  {
+    userId: 2,
     userName: "cathy123",
     password: "icecream",
     email: "test@test.com",
     birthday: "06/23/2000"
   },
   {
-    userId: 55555,
-    userName: "fredburger54",
-    password: "password",
-    email: "test@test.com",
-    birthday: "06/23/2000"
-  },
-  {
-    userId: 34212,
+    userId: 3,
     userName: "coolcathy34",
     password: "badpassword",
     email: "test@test.com",

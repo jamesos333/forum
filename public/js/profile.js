@@ -99,7 +99,7 @@ function deleteAccount() {
       if(!data.message) {
         //console.log(data.success)
         logout();
-        window.location.href = "/register.html"
+        window.location.href = "/index.html"
       }
     })
     .catch((error) => {
