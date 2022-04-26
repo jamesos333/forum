@@ -1,4 +1,5 @@
 const Thread = require('../models/thread');
+const User = require('../models/user');
 const posts = [
     {
         postId: 1,
@@ -23,8 +24,7 @@ function makePost(data) {
         date: formatDate(new Date()),
     }
     posts.push(newPost);
-    Thread.addReply( {post: newPost, threadId: data.threadId-1} );
-    //console.log( newPost );
+    Thread.addReply( {post: newPost, threadId: data.threadId} );
     return newPost;
 }
 

@@ -69,8 +69,16 @@ function newPassword(data) {
   return users[i];
 }
 
+//gets user by user id
+function getUser( id ) {
+
+  var tmpId = parseInt( id );
+  let i = users.map((users) => users.userId).indexOf(tmpId);
+  return users[i];
+}
+
 function userExists(username) {
   return users.filter((u) => u.userName === username);
 }
 
-module.exports = { getUsers, login, register, deleteUser, newUsername, newPassword };
+module.exports = { getUsers, login, register, getUser, deleteUser, newUsername, newPassword };

@@ -11,6 +11,8 @@ if (postBox) postBox.addEventListener('submit', newPost);
 const urlParams = new URLSearchParams(window.location.search);
 const threadId = urlParams.get('id');
 
+const user = getCurrentUser();
+
 // creates a new thread
 function newThread(e) {
   e.preventDefault();
@@ -19,7 +21,6 @@ function newThread(e) {
   const body = document.getElementById("body").value;
   const img = document.getElementById("img").value;
 
-  const user = getCurrentUser();
   // checks if user is logged in before allowing a thread to be made
   if (user !== null) {
     fetchData('/threads/newthread', { title: title, body: body, user: user }, "POST")
@@ -49,8 +50,6 @@ function newPost(e) {
 
   const title = document.getElementById("title").value;
   const body = document.getElementById("body").value;
-  const user = getCurrentUser();
-
 
   // checks if user is logged in before allowing a thread to be made
   if (user !== null) {

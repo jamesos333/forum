@@ -51,9 +51,11 @@ function deleteThread(threadId) {
 }
 
 function addReply(reply) {
-  threads[reply.threadId].replies.push(reply.post);
-  //console.log( threads[reply.threadId].replies );
-  return threads[reply.threadId].replies;
+  var tmpId = parseInt( reply.threadId );
+  let i = threads.map((threads) => threads.threadId).indexOf(tmpId);
+  // pushes post into replies array
+  threads[i].replies.push(reply.post);
+  return threads[i].replies;
 }
 
 // for formatting the date

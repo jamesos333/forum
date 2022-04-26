@@ -12,13 +12,22 @@ profile.innerHTML = `
   <h2>Welcome back, ${user.userName}!</h2>
   <div>
     <p class="error"></p>
+    <div id="admincontrols"></div>
     <button class="btn" id="edit">Edit Info</button>
     <button class="btn" id="delete">Delete Account</button>
   </div>
 `;
 
+// adds admin controls if admin is logged in
+if( user.userId == 1 ){
+  document.getElementById("admincontrols").innerHTML += `
+    <button class="btn" id="admincontrols">Admin Controls</button>
+`;
+}
+
 document.getElementById("edit").addEventListener('click', editProfile);
 document.getElementById("delete").addEventListener('click', deleteAccount);
+document.getElementById("admincontrols").addEventListener('click', adminControls);
 
 function editProfile() {
   profile.classList.toggle("hide");
@@ -50,7 +59,41 @@ function editProfile() {
   document.getElementById("passwordsubmit").addEventListener('click', editPassword);
   // activates cancel button
   document.getElementById("cancel").addEventListener('click', (e) => {
-    window.location.href = "profile.html";
+    location.reload();
+  })
+}
+
+function adminControls() {
+  profile.classList.toggle("hide");
+  let editForm = document.getElementById("editForm");
+  editForm.innerHTML = `
+    <form id="form" class="basic-form">
+      <p class="error"></p>
+      <h2>Delete Thread</h2>
+      <label for="deletethread">Thread ID</label>
+      <input type="number" name="deletethread" id="deletethread">
+      <br>
+      <input type="submit" id="deletethreadsubmit" value="Submit">
+    </form>
+
+    <form id="form" class="basic-form">
+      <p class="error"></p>
+      <h2>Delete Post</h2>
+      <label for="deletepost">Post ID</label>
+      <input type="number" name="deletepost" id="deletepost"">
+      <br>
+      <input type="submit" id="deletepostsubmit" value="Submit">
+    </form>
+    <button class="btn" id="cancel">Cancel</button>
+  `;
+
+  //activates username submit button
+  document.getElementById("deletethreadsubmit").addEventListener('click', editUsername);
+  //activates password submit button
+  document.getElementById("deletepostsubmit").addEventListener('click', editPassword);
+  // activates cancel button
+  document.getElementById("cancel").addEventListener('click', (e) => {
+    location.reload();
   })
 }
 

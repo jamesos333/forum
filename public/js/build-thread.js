@@ -6,7 +6,7 @@ const repliesLocation = document.querySelector('replies');
 const template = await (await fetch('/elements/post.html')).text();
 
 //gets the thread number by referencing the url tags
-const urlParams = new URLSearchParams( window.location.search );
+const urlParams = new URLSearchParams(window.location.search);
 const threadId = urlParams.get('id');
 
 
@@ -61,6 +61,5 @@ function buildPage(data) {
     //adds in the username and date line
     usernames[usernames.length - i - 1].innerHTML = replies[i].user + " | " + replies[i].date;
   }
-
   //console.log(replies);
 }
