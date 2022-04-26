@@ -17,8 +17,8 @@ if (getCurrentUser()) {
 }
 
 // sets current page to active
-if( (url.split("/").length)-1 == 1 ) {
-  //document.getElementById(currentPage).classList.add('active');
+if( document.getElementById(currentPage) !== null ) {
+  document.getElementById(currentPage).classList.add('active');
 }
 
 // Fetch method implementation:

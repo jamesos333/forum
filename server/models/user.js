@@ -54,7 +54,6 @@ function deleteUser(userId) {
 }
 
 function newUsername(data) {
-
   let i = users.map((user) => user.userId).indexOf(data.userId);
   users[i].userName = data.username;
   console.log( users[i] );
@@ -62,7 +61,6 @@ function newUsername(data) {
 }
 
 function newPassword(data) {
-
   let i = users.map((user) => user.userId).indexOf(data.userId);
   users[i].password = data.password;
   console.log( users[i] );
@@ -71,7 +69,6 @@ function newPassword(data) {
 
 //gets user by user id
 function getUser( id ) {
-
   var tmpId = parseInt( id );
   let i = users.map((users) => users.userId).indexOf(tmpId);
   return users[i];

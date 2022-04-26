@@ -11,7 +11,6 @@ let profile = document.getElementById("profile");
 profile.innerHTML = `
   <h2>Welcome back, ${user.userName}!</h2>
   <div>
-    <p class="error"></p>
     <div id="admincontrols"></div>
     <button class="btn" id="edit">Edit Info</button>
     <button class="btn" id="delete">Delete Account</button>
@@ -38,7 +37,7 @@ function editProfile() {
       <h2>Edit Profile</h2>
       <label for="username">Change Username</label>
       <input type="text" name="username" id="username" placeholder="${user.userName}">
-      <br>
+      <br><br>
       <input type="submit" id="usernamesubmit" value="Submit">
     </form>
 
@@ -47,7 +46,7 @@ function editProfile() {
       <h2>Change Password</h2>
       <label for="pswd">Change Password</label>
       <input type="password" name="pswd" id="pswd">
-      <br>
+      <br><br>
       <input type="submit" id="passwordsubmit" value="Submit">
     </form>
     <button class="btn" id="cancel">Cancel</button>
@@ -72,29 +71,62 @@ function adminControls() {
       <h2>Delete Thread</h2>
       <label for="deletethread">Thread ID</label>
       <input type="number" name="deletethread" id="deletethread">
-      <br>
+      <br><br>
       <input type="submit" id="deletethreadsubmit" value="Submit">
     </form>
 
     <form id="form" class="basic-form">
-      <p class="error"></p>
       <h2>Delete Post</h2>
       <label for="deletepost">Post ID</label>
       <input type="number" name="deletepost" id="deletepost"">
-      <br>
+      <br><br>
       <input type="submit" id="deletepostsubmit" value="Submit">
     </form>
     <button class="btn" id="cancel">Cancel</button>
   `;
 
-  //activates username submit button
-  document.getElementById("deletethreadsubmit").addEventListener('click', editUsername);
-  //activates password submit button
-  document.getElementById("deletepostsubmit").addEventListener('click', editPassword);
+  //activates thread delete button
+  document.getElementById("deletethreadsubmit").addEventListener('click', deleteThread);
+  //activates post delete button
+  document.getElementById("deletepostsubmit").addEventListener('click', deletePost);
   // activates cancel button
   document.getElementById("cancel").addEventListener('click', (e) => {
     location.reload();
   })
+}
+
+function deleteThread(e) {
+  e.preventDefault();
+
+  const deleteThreadID = document.getElementById("deletethread").value;
+  fetchData('/threads/deletethread', {id: deleteThreadID}, "POST")
+  .then((data) => {
+    if(!data.message) {
+      document.querySelector("p.error").innerHTML = "Thread Successfully Deleted";
+    }
+  })
+  .catch((error) => {
+    const errText = error.message;
+    document.querySelector("p.error").innerHTML = errText;
+    console.log(`Error! ${errText}`)
+  });
+}
+
+function deletePost(e) {
+  e.preventDefault();
+
+  const deletePostID = document.getElementById("deletepost").value;
+  fetchData('/posts/deletepost', {id: deletePostID}, "POST")
+  .then((data) => {
+    if(!data.message) {
+      document.querySelector("p.error").innerHTML = "Post Successfully Deleted";
+    }
+  })
+  .catch((error) => {
+    const errText = error.message;
+    document.querySelector("p.error").innerHTML = errText;
+    console.log(`Error! ${errText}`)
+  });
 }
 
 function editUsername(e) {

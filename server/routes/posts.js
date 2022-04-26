@@ -21,6 +21,15 @@ router
     }
 })
 
+.post('/deletepost', (req, res) => {
+    try {
+        const post = Posts.deletePost(req.body);
+        res.send({ ...post })
+    } catch (error) {
+        res.status(401).send({ message: error.message });
+    }
+})
+
 .post('/makepost', (req, res) => {
     try {
         const post = Posts.makePost(req.body);

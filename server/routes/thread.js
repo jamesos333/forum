@@ -30,6 +30,15 @@ router
         }
     })
 
+    .post('/deletethread', (req, res) => {
+        try {
+            const thread = Thread.deleteThread(req);
+            res.send(thread);
+        } catch (err) {
+            res.status(401).send({ message: err.message });
+        }
+    })
+
     .post('/addreply', (req, res) => {
         try {
             const thread = Thread.addReply(req.body);

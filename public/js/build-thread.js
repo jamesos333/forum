@@ -18,6 +18,7 @@ threadImg.addEventListener("click", function (i) {
   } else {
     threadImg.classList.add('postimg-click');
   }
+  threadImg.classList.toggle('postimg-thumb');
 });
 
 // gets a specific thread

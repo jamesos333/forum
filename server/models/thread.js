@@ -21,6 +21,7 @@ const threads = [
 
 let getThreads = () => threads;
 
+// makes and returns a new thread
 function makeThread(thread) {
   postNum++;
   const newThread = {
@@ -37,25 +38,44 @@ function makeThread(thread) {
   return newThread;
 }
 
+// deletes a thread by its ID
+function deleteThread(data) {
+  var tmpId = parseInt(data.body.id);
+  let t = threads.map((threads) => threads.threadId).indexOf(tmpId);
+  if (t !== -1) {
+    threads.splice(t, 1);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// adds reply to a thread
+function addReply(reply) {
+  var threadTmp = getById(reply.threadId);
+  // pushes post into replies array
+  threadTmp.replies.push(reply.post);
+  return threadTmp.replies;
+}
+
+// get thread by id object value
 function getThread(data) {
-  //console.log( threads[id.body.id] );
-  var tmpId = parseInt( data.body.id );
+  return getById(data.body.id);
+}
+
+// gets a thread by its ID and returns the thread
+function getById(id) {
+  var tmpId = parseInt(id);
   let i = threads.map((threads) => threads.threadId).indexOf(tmpId);
   return threads[i];
 }
 
-function deleteThread(threadId) {
-  let i = threads.map((threads) => threads.threadId).indexOf(threadId);
-  threads.splice(i, 1);
-  console.log(threads);
-}
-
-function addReply(reply) {
-  var tmpId = parseInt( reply.threadId );
-  let i = threads.map((threads) => threads.threadId).indexOf(tmpId);
-  // pushes post into replies array
-  threads[i].replies.push(reply.post);
-  return threads[i].replies;
+// deletes a reply in a thread
+function removeReply(postId, threadId) {
+  var r = getById(threadId).replies;
+  let i = r.map((r) => r.postId).indexOf(postId);
+  r.splice(i, 1);
+  return true;
 }
 
 // for formatting the date
@@ -63,4 +83,4 @@ function formatDate(date) {
   return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
 }
 
-module.exports = { getThreads, makeThread, getThread, addReply, deleteThread };
+module.exports = { getThreads, makeThread, getThread, addReply, deleteThread, removeReply };
