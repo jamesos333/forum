@@ -26,7 +26,6 @@ function newThread(e) {
     fetchData('/threads/newthread', { title: title, body: body, user: user }, "POST")
       .then((data) => {
         if (!data.message) {
-          console.log(img);
           threadBox.reset();
           location.reload();
         }

@@ -52,10 +52,13 @@ function deleteThread(data) {
 
 // adds reply to a thread
 function addReply(reply) {
-  var threadTmp = getById(reply.threadId);
+  var t = getById(reply.threadId);
   // pushes post into replies array
-  threadTmp.replies.push(reply.post);
-  return threadTmp.replies;
+  t.replies.push(reply.post);
+  // bumps thread to the top
+  threads.splice( getByIdId(reply.threadId), 1 )
+  threads.push(t);
+  return t.replies;
 }
 
 // get thread by id object value
@@ -68,6 +71,13 @@ function getById(id) {
   var tmpId = parseInt(id);
   let i = threads.map((threads) => threads.threadId).indexOf(tmpId);
   return threads[i];
+}
+
+// gets a thread by its ID and returns the index
+function getByIdId(id) {
+  var tmpId = parseInt(id);
+  let i = threads.map((threads) => threads.threadId).indexOf(tmpId);
+  return i;
 }
 
 // deletes a reply in a thread

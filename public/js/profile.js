@@ -70,7 +70,7 @@ function adminControls() {
       <p class="error"></p>
       <h2>Delete Thread</h2>
       <label for="deletethread">Thread ID</label>
-      <input type="number" name="deletethread" id="deletethread">
+      <input type="number" name="deletethread" id="deletethread" min="1">
       <br><br>
       <input type="submit" id="deletethreadsubmit" value="Submit">
     </form>
@@ -78,7 +78,7 @@ function adminControls() {
     <form id="form" class="basic-form">
       <h2>Delete Post</h2>
       <label for="deletepost">Post ID</label>
-      <input type="number" name="deletepost" id="deletepost"">
+      <input type="number" name="deletepost" id="deletepost" min="1">
       <br><br>
       <input type="submit" id="deletepostsubmit" value="Submit">
     </form>
