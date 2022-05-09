@@ -11,7 +11,7 @@ var currentPage = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
 
 // customizes header if user is logged in
 if (getCurrentUser()) {
-  document.getElementById("login").outerHTML = '<a id="user" href="/user.html"></a>';
+  document.getElementById("login").outerHTML = '<a id="user" href="/user"></a>';
   document.getElementById("user").innerHTML = "hello, " + getCurrentUser().userName;
   document.getElementById("register").outerHTML = '<a id="logout" >Logout</a>';
 }
@@ -81,5 +81,5 @@ if (logoutBtn) logoutBtn.addEventListener('click', logout)
 
 export function logout() {
   removeCurrentUser();
-  window.location.href = "/index.html";
+  window.location.href = "/";
 }

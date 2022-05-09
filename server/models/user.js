@@ -1,3 +1,5 @@
+const con = require("./db_connect");
+
 const users = [
   {
     userId: 1,
@@ -21,6 +23,19 @@ const users = [
     birthday: "06/23/2000"
   }
 ]
+
+async function createTable() {
+  let sql = `CREATE TABLE IF NOT EXISTS users (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    userName VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255),
+    birthday VARCHAR(255),
+    password VARCHAR(255),
+    CONSTRAINT user_pk PRIMARY KEY(user_id)
+  )`;
+  await con.query(sql);
+}
+createTable();
 
 let getUsers = () => users;
 

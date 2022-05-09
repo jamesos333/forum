@@ -15,7 +15,7 @@ function login(e) {
   .then((data) => {
     if(!data.message) {
       setCurrentUser(data);
-      window.location.href = "/index.html";
+      window.location.href = "/";
     }
   })
   .catch((error) => {
@@ -42,7 +42,7 @@ function register(e) {
   .then((data) => {
     if(!data.message) {
       setCurrentUser(data);
-      window.location.href = "index.html";
+      window.location.href = "/";
     }
   })
   .catch((error) => {
