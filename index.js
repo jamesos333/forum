@@ -5,7 +5,7 @@ const path = require('path');
 
 const userRoutes = require('./server/routes/user');
 const threadRoutes = require('./server/routes/thread');
-const postRoutes = require('./server/routes/posts');
+const postRoutes = require('./server/routes/post');
 const boardRoutes = require('./server/routes/board');
 
 // global post number
@@ -33,7 +33,7 @@ app.use(function(req, res, next) {
 app.use("/users", userRoutes);
 app.use("/threads", threadRoutes);
 app.use("/posts", postRoutes);
-app.use("/board", boardRoutes);
+app.use("/boards", boardRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!`));

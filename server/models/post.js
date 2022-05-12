@@ -1,5 +1,3 @@
-const Thread = require('../models/thread');
-const User = require('../models/user');
 const con = require("./db_connect");
 
 // creates the mysql table

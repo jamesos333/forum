@@ -1,11 +1,14 @@
-import 
-{ getCurrentUser, setCurrentUser, removeCurrentUser, logout, fetchData } 
-from './main.js'
+import { getCurrentUser, setCurrentUser, removeCurrentUser, logout, fetchData }
+  from './main.js'
 
 
 let user = getCurrentUser();
 
-if(!user) window.location.href = "login.html";
+if (!user) window.location.href = "login.html";
+
+// templates for login forms
+const profile_form = await (await fetch('/elements/profile_form.html')).text();
+const admin_form = await (await fetch('/elements/admin_form.html')).text();
 
 let profile = document.getElementById("profile");
 profile.innerHTML = `
@@ -18,7 +21,7 @@ profile.innerHTML = `
 `;
 
 // adds admin controls if admin is logged in
-if( user.userName == "admin" ){
+if (user.userName == "admin") {
   document.getElementById("admincontrols").innerHTML += `
     <button class="btn" id="admincontrols">Admin Controls</button>
 `;
@@ -31,26 +34,7 @@ document.getElementById("admincontrols").addEventListener('click', adminControls
 function editProfile() {
   profile.classList.toggle("hide");
   let editForm = document.getElementById("editForm");
-  editForm.innerHTML = `
-    <form id="form" class="basic-form">
-      <p class="error"></p>
-      <h2>Edit Profile</h2>
-      <label for="username">Change Username</label>
-      <input type="text" name="username" id="username" placeholder="${user.userName}">
-      <br><br>
-      <input type="submit" id="usernamesubmit" value="Submit">
-    </form>
-
-    <form id="passForm" class="basic-form">
-      <p class="error"></p>
-      <h2>Change Password</h2>
-      <label for="pswd">Change Password</label>
-      <input type="password" name="pswd" id="pswd">
-      <br><br>
-      <input type="submit" id="passwordsubmit" value="Submit">
-    </form>
-    <button class="btn" id="cancel">Cancel</button>
-  `;
+  editForm.innerHTML = profile_form;
 
   //activates username submit button
   document.getElementById("usernamesubmit").addEventListener('click', editUsername);
@@ -65,25 +49,7 @@ function editProfile() {
 function adminControls() {
   profile.classList.toggle("hide");
   let editForm = document.getElementById("editForm");
-  editForm.innerHTML = `
-    <form id="form" class="basic-form">
-      <p class="error"></p>
-      <h2>Delete Thread</h2>
-      <label for="deletethread">Thread ID</label>
-      <input type="number" name="deletethread" id="deletethread" min="1">
-      <br><br>
-      <input type="submit" id="deletethreadsubmit" value="Submit">
-    </form>
-
-    <form id="form" class="basic-form">
-      <h2>Delete Post</h2>
-      <label for="deletepost">Post ID</label>
-      <input type="number" name="deletepost" id="deletepost" min="1">
-      <br><br>
-      <input type="submit" id="deletepostsubmit" value="Submit">
-    </form>
-    <button class="btn" id="cancel">Cancel</button>
-  `;
+  editForm.innerHTML = admin_form;
 
   //activates thread delete button
   document.getElementById("deletethreadsubmit").addEventListener('click', deleteThread);
@@ -99,43 +65,43 @@ function deleteThread(e) {
   e.preventDefault();
 
   const deleteThreadID = document.getElementById("deletethread").value;
-  fetchData('/threads/deletethread', {id: deleteThreadID}, "POST")
-  .then((data) => {
-    if(!data.message) {
-      document.querySelector("p.error").innerHTML = "Thread Successfully Deleted";
-    }
-  })
-  .catch((error) => {
-    const errText = error.message;
-    document.querySelector("p.error").innerHTML = errText;
-    console.log(`Error! ${errText}`)
-  });
+  fetchData('/threads/deletethread', { id: deleteThreadID }, "POST")
+    .then((data) => {
+      if (!data.message) {
+        document.querySelector("p.error").innerHTML = "Thread Successfully Deleted";
+      }
+    })
+    .catch((error) => {
+      const errText = error.message;
+      document.querySelector("p.error").innerHTML = errText;
+      console.log(`Error! ${errText}`)
+    });
 }
 
 function deletePost(e) {
   e.preventDefault();
 
   const deletePostID = document.getElementById("deletepost").value;
-  fetchData('/posts/deletepost', {id: deletePostID}, "POST")
-  .then((data) => {
-    if(!data.message) {
-      document.querySelector("p.error").innerHTML = "Post Successfully Deleted";
-    }
-  })
-  .catch((error) => {
-    const errText = error.message;
-    document.querySelector("p.error").innerHTML = errText;
-    console.log(`Error! ${errText}`)
-  });
+  fetchData('/posts/deletepost', { id: deletePostID }, "POST")
+    .then((data) => {
+      if (!data.message) {
+        document.querySelector("p.error").innerHTML = "Post Successfully Deleted";
+      }
+    })
+    .catch((error) => {
+      const errText = error.message;
+      document.querySelector("p.error").innerHTML = errText;
+      console.log(`Error! ${errText}`)
+    });
 }
 
 function editUsername(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const newUsername = document.getElementById("username").value;
-    fetchData('/users/newusername', {userName: newUsername, userId: user.user_id}, "POST")
+  const newUsername = document.getElementById("username").value;
+  fetchData('/users/newusername', { userName: newUsername, userId: user.user_id }, "POST")
     .then((data) => {
-      if(!data.message) {
+      if (!data.message) {
         setCurrentUser(data);
         window.location.href = "/"
       }
@@ -149,12 +115,12 @@ function editUsername(e) {
 }
 
 function editPassword(e) {
-    e.preventDefault();
-    console.log("here");
-    const newPassword = document.getElementById("pswd").value;
-    fetchData('/users/newpassword', {password: newPassword, userId: user.user_id}, "POST")
+  e.preventDefault();
+  console.log("here");
+  const newPassword = document.getElementById("pswd").value;
+  fetchData('/users/newpassword', { password: newPassword, userId: user.user_id }, "POST")
     .then((data) => {
-      if(!data.message) {
+      if (!data.message) {
         logout();
         window.location.href = "/"
       }
@@ -168,19 +134,19 @@ function editPassword(e) {
 }
 
 function deleteAccount() {
-  if(confirm('Are you sure you want to delete your account???')) {
-    fetchData('/users/delete', {userId: user.user_id}, "DELETE")
-    .then((data) => {
-      if(!data.message) {
-        console.log(data.success)
-        logout();
-        window.location.href = "/"
-      }
-    })
-    .catch((error) => {
-      const errText = error.message;
-      document.querySelector("#profile div p.error").innerHTML = errText;
-      console.log(`Error! ${errText}`)
-    })
+  if (confirm('Are you sure you want to delete your account???')) {
+    fetchData('/users/delete', { userId: user.user_id }, "DELETE")
+      .then((data) => {
+        if (!data.message) {
+          console.log(data.success)
+          logout();
+          window.location.href = "/"
+        }
+      })
+      .catch((error) => {
+        const errText = error.message;
+        document.querySelector("#profile div p.error").innerHTML = errText;
+        console.log(`Error! ${errText}`)
+      })
   }
 }
