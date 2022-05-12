@@ -52,7 +52,7 @@ function newPost(e) {
 
   // checks if user is logged in before allowing a thread to be made
   if (user !== null) {
-    fetchData('/posts/makepost', { title: title, body: body, user: user.userName, threadId: threadId }, "POST")
+    fetchData('/posts/makepost', { title: title, body: body, user: user.userName, thread_id: threadId }, "POST")
       .then((data) => {
         if (!data.message) {
           postBox.reset();

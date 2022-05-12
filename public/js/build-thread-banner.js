@@ -32,10 +32,10 @@ function buildThreads(allThreads) {
     for( let i = 0; i < titles.length; i++ ){
         //adds in the titles
         titles[titles.length-i-1].innerHTML = allThreads[i].title;
-        titles[titles.length-i-1].href= "thread?id=" + allThreads[i].threadId;
+        titles[titles.length-i-1].href= "thread?id=" + allThreads[i].thread_id;
         //adds in the username / date line
-        usernames[usernames.length-i-1].innerHTML = allThreads[i].user.userName + " | " + allThreads[i].date;
+        usernames[usernames.length-i-1].innerHTML = allThreads[i].user + " | " + allThreads[i].date;
         //puts in the thread id's
-        ids[ids.length-i-1].innerHTML = "#" + allThreads[i].threadId;
+        ids[ids.length-i-1].innerHTML = "#" + allThreads[i].thread_id;
     }
 }

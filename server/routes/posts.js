@@ -3,36 +3,36 @@ const Posts = require('../models/post');
 const router = express.Router();
 
 router
-.get('/', (req, res) => {
+.get('/', async (req, res) => {
     try {
-        const post = Posts.getPosts();
+        const post = await Posts.getPosts();
         res.send(post);
     } catch (err) {
         res.status(401).send({ message: err.message });
     }
 })
 
-.post('/getpost', (req, res) => {
+.post('/getpost', async (req, res) => {
     try {
-        const post = Posts.getPost(req);
+        const post = await Posts.getPost(req);
         res.send(post);
     } catch (err) {
         res.status(401).send({ message: err.message });
     }
 })
 
-.post('/deletepost', (req, res) => {
+.post('/deletepost', async (req, res) => {
     try {
-        const post = Posts.deletePost(req.body);
+        const post = await Posts.deletePost(req.body);
         res.send({ ...post })
     } catch (error) {
         res.status(401).send({ message: error.message });
     }
 })
 
-.post('/makepost', (req, res) => {
+.post('/makepost', async (req, res) => {
     try {
-        const post = Posts.makePost(req.body);
+        const post = await Posts.makePost(req.body);
         res.send({ ...post })
     } catch (error) {
         res.status(401).send({ message: error.message });

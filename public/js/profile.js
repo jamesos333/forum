@@ -18,7 +18,7 @@ profile.innerHTML = `
 `;
 
 // adds admin controls if admin is logged in
-if( user.userId == 1 ){
+if( user.userName == "admin" ){
   document.getElementById("admincontrols").innerHTML += `
     <button class="btn" id="admincontrols">Admin Controls</button>
 `;

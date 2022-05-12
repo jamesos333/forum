@@ -39,8 +39,8 @@ function buildPage(data) {
   document.getElementById("thread-title").innerHTML = data.title;
   document.getElementById("thread-body").innerHTML = data.body;
   document.getElementById("thread-image").src = data.image;
-  document.getElementById("thread-username").innerHTML = data.user.userName + " | " + data.date;
-  document.getElementById("thread-id").innerHTML = "#" + data.threadId;
+  document.getElementById("thread-username").innerHTML = data.user + " | " + data.date;
+  document.getElementById("thread-id").innerHTML = "#" + data.thread_id;
 
   // makes the posts but blank
   var replies = data.replies;
@@ -58,7 +58,7 @@ function buildPage(data) {
     titles[titles.length - i - 1].innerHTML = replies[i].title;
     bodies[bodies.length - i - 1].innerHTML = replies[i].body;
     // post ids
-    ids[ids.length - i - 1].innerHTML = "#" + replies[i].postId;
+    ids[ids.length - i - 1].innerHTML = "#" + replies[i].post_id;
     //adds in the username and date line
     usernames[usernames.length - i - 1].innerHTML = replies[i].user + " | " + replies[i].date;
   }

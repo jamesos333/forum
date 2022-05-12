@@ -1,58 +1,63 @@
 const Thread = require('../models/thread');
 const User = require('../models/user');
-const posts = [
-    {
-        postId: 2,
-        title: "I HATE THIS THING THAT YOU LIKE",
-        body: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui nostrum at perferendis, soluta earum dolorem reiciendis aperiam expedita. Beatae cum nam pariatur unde numquam nihil dolore laboriosam saepe sed amet?",
-        user: "jameshater",
-        date: "04/08/2022",
-        threadId: 1
-    }
-]
+const con = require("./db_connect");
 
-let getPosts = () => posts;
+// creates the mysql table
+async function createTable() {
+    let sql = `CREATE TABLE IF NOT EXISTS posts (
+      post_id INT NOT NULL AUTO_INCREMENT,
+      title VARCHAR(255),
+      body LONGTEXT,
+      user VARCHAR(255),
+      date DATETIME DEFAULT NOW(),
+      image LONGTEXT,
+      thread_id INT,
+      CONSTRAINT thread_pk PRIMARY KEY(post_id)
+    )`;
+    await con.query(sql);
+}
+createTable();
 
-function makePost(data) {
-    postNum++;
-    const newPost = {
-        postId: postNum,
-        title: data.title,
-        body: data.body,
-        user: data.user,
-        threadId: data.threadId,
-        date: formatDate(new Date()),
-    }
-    posts.push(newPost);
-    Thread.addReply({ post: newPost, threadId: data.threadId });
-    return newPost;
+// gets all posts
+let getPosts = async () => {
+    const sql = `SELECT * FROM posts`;
+    return await con.query(sql);
+};
+
+// makes a new post
+async function makePost(post) {
+    const sql = `INSERT INTO posts (title, body, user, image, thread_id)
+    VALUES ("${post.title}", "${post.body}", "${post.user}", "${"/images/postimagetest2.jpg"}", "${post.thread_id}")
+  `;
+
+    const insert = await con.query(sql);
+    return insert;
 }
 
-// gets post using object reference
-function getPost(data) {
-    return getById(data.body.id);
+// gets a post using id object value
+async function getPost(data) {
+    return await getById(data.body.id);
 }
 
 // deletes a post by its ID
-function deletePost(data) {
-    var tmpId = parseInt( data.id ); 
-    let t = posts.map((posts) => posts.postId).indexOf(tmpId);
-    Thread.removeReply( tmpId, posts[t].threadId );
-    posts.splice(t, 1);
+async function deletePost(id) {
+    const sql = `DELETE FROM posts 
+    WHERE post_id = ${id.id}
+  `;
+    await con.query(sql);
     return true;
 }
 
 // gets a post by its ID
-function getById(id){
-    var tmpId = parseInt( id ); 
-    let i = posts.map((posts) => posts.postId).indexOf(tmpId);
-    console.log(posts.map((posts) => posts.postId));
-    return posts[i];
-  }
-
-// for formatting the date
-function formatDate(date) {
-    return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+async function getById(id) {
+    let sql;
+    if (id) {
+        sql = `SELECT * FROM posts
+        WHERE post_id = ${id}
+      `;
+    }
+    const p = await con.query(sql);
+    return p[0];
 }
 
 module.exports = { getPost, makePost, deletePost };

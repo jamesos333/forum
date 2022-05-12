@@ -3,45 +3,45 @@ const Thread = require('../models/thread');
 const router = express.Router();
 
 router
-    .get('/', (req, res) => {
+    .get('/', async (req, res) => {
         try {
-            const threads = Thread.getThreads();
+            const threads = await Thread.getThreads();
             res.send(threads);
         } catch (err) {
             res.status(401).send({ message: err.message });
         }
     })
 
-    .post('/getthread', (req, res) => {
+    .post('/getthread', async (req, res) => {
         try {
-            const thread = Thread.getThread(req);
+            const thread = await Thread.getThread(req);
             res.send(thread);
         } catch (err) {
             res.status(401).send({ message: err.message });
         }
     })
 
-    .post('/newthread', (req, res) => {
+    .post('/newthread', async (req, res) => {
         try {
-            const thread = Thread.makeThread(req.body);
+            const thread = await Thread.makeThread(req.body);
             res.send({ ...thread })
         } catch (error) {
             res.status(401).send({ message: error.message });
         }
     })
 
-    .post('/deletethread', (req, res) => {
+    .post('/deletethread', async (req, res) => {
         try {
-            const thread = Thread.deleteThread(req);
-            res.send(thread);
+            const thread = await Thread.deleteThread(req);
+            res.send({ ...thread });
         } catch (err) {
             res.status(401).send({ message: err.message });
         }
     })
 
-    .post('/addreply', (req, res) => {
+    .post('/addreply', async (req, res) => {
         try {
-            const thread = Thread.addReply(req.body);
+            const thread = await Thread.addReply(req.body);
             res.send({ ...thread })
         } catch (error) {
             res.status(401).send({ message: error.message });
