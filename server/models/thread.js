@@ -23,7 +23,7 @@ let getThreads = async () => {
 // makes and returns a new thread
 async function makeThread(thread) {
   const sql = `INSERT INTO threads (title, body, user, image)
-  VALUES ("${thread.title}", "${thread.body}", "${thread.user.userName}", "${"/images/postimagetest2.jpg"}")
+  VALUES ("${thread.title}", "${thread.body}", "${thread.user.userName}", "${thread.image}")
 `;
 
   const insert = await con.query(sql);

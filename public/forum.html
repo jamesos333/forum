@@ -17,7 +17,7 @@
     <div class="row">
 
         <div class="postbox">
-            <form id="thread-box">
+            <form id="thread-box" method="post" enctype="multipart/form-data">
                 <h2> New Thread </h2>
                 <table class="centertable">
                     <tr>
@@ -30,13 +30,14 @@
                     </tr>
                     <tr>
                         <td> <label for="img">Image</label> </td>
-                        <th> <input type="file" id="img" name="img" accept="image/*"><br> </th>
+                        <th> <input type="file" id="img" name="img" accept="image/*"> <br> </th>
                     </tr>
                 </table>
                 <br>
                 <input type="submit" value="Post">
                 <p class="error"></p>
             </form>
+        </form>
         </div>
 
         <div class="middlecolumn">

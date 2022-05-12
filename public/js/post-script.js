@@ -14,16 +14,17 @@ const threadId = urlParams.get('id');
 const user = getCurrentUser();
 
 // creates a new thread
-function newThread(e) {
+async function newThread(e) {
   e.preventDefault();
 
   const title = document.getElementById("title").value;
   const body = document.getElementById("body").value;
-  const img = document.getElementById("img").value;
-
+  const img = "images/" + await imageUpload();
+  
+  console.log( img );
   // checks if user is logged in before allowing a thread to be made
   if (user !== null) {
-    fetchData('/threads/newthread', { title: title, body: body, user: user }, "POST")
+    fetchData('/threads/newthread', { title: title, body: body, user: user, image: img }, "POST")
       .then((data) => {
         if (!data.message) {
           threadBox.reset();
@@ -41,6 +42,17 @@ function newThread(e) {
     console.log(`Error! ${errText}`)
   }
 
+}
+
+// handles multer image uploads
+async function imageUpload(e) {
+  //sends the form data to multer
+  let formData = new FormData(threadBox);
+  const response = await fetch('http://localhost:3000/upload/', {
+    method: 'POST',
+    body: formData
+  });
+  return await response.text();
 }
 
 // for making new posts
