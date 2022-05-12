@@ -133,11 +133,11 @@ function editUsername(e) {
     e.preventDefault();
 
     const newUsername = document.getElementById("username").value;
-    fetchData('/users/newusername', {username: newUsername, userId: user.userId}, "POST")
+    fetchData('/users/newusername', {userName: newUsername, userId: user.user_id}, "POST")
     .then((data) => {
       if(!data.message) {
         setCurrentUser(data);
-        window.location.href = "/index.html"
+        window.location.href = "/"
       }
     })
     .catch((error) => {
@@ -152,11 +152,11 @@ function editPassword(e) {
     e.preventDefault();
     console.log("here");
     const newPassword = document.getElementById("pswd").value;
-    fetchData('/users/newpassword', {password: newPassword, userId: user.userId}, "POST")
+    fetchData('/users/newpassword', {password: newPassword, userId: user.user_id}, "POST")
     .then((data) => {
       if(!data.message) {
         logout();
-        window.location.href = "/index.html"
+        window.location.href = "/"
       }
     })
     .catch((error) => {
@@ -168,13 +168,13 @@ function editPassword(e) {
 }
 
 function deleteAccount() {
-  if(confirm('Are you sure you want to delete your account?')) {
-    fetchData('/users/delete', {userId: user.userId}, "DELETE")
+  if(confirm('Are you sure you want to delete your account???')) {
+    fetchData('/users/delete', {userId: user.user_id}, "DELETE")
     .then((data) => {
       if(!data.message) {
-        //console.log(data.success)
+        console.log(data.success)
         logout();
-        window.location.href = "/index.html"
+        window.location.href = "/"
       }
     })
     .catch((error) => {

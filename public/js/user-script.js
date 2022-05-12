@@ -42,6 +42,7 @@ function register(e) {
   .then((data) => {
     if(!data.message) {
       setCurrentUser(data);
+      console.log(data);
       window.location.href = "/";
     }
   })

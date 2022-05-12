@@ -1,8 +1,8 @@
 const boards = [
     {
       boardId: 1,
-      title: "General",
-      body: "All general discussions :)",
+      title: "general",
+      body: "All general discussions",
       threads: []
     }
   ]

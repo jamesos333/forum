@@ -21,36 +21,37 @@ router
     }
   })
 
-  .post('/register', (req, res) => {
+  .post('/register', async (req, res) => {
     try {
-      const user = User.register(req.body);
+      const user = await User.register(req.body);
+      console.log(user);
       res.send({...user, password: undefined})
     } catch(error) {
       res.status(401).send({message: error.message});
     }
   })
 
-  .post('/newusername', (req, res) => {
+  .post('/newusername', async (req, res) => {
     try {
-      const user = User.newUsername(req.body);
+      const user = await User.newUsername(req.body);
       res.send({...user, password: undefined})
     } catch(error) {
       res.status(401).send({message: error.message});
     }
   })
 
-  .post('/newpassword', (req, res) => {
+  .post('/newpassword', async (req, res) => {
     try {
-      const user = User.newPassword(req.body);
+      const user = await User.newPassword(req.body);
       res.send({...user, password: undefined})
     } catch(error) {
       res.status(401).send({message: error.message});
     }
   })
 
-  .delete('/delete', (req, res) => {
+  .delete('/delete', async (req, res) => {
     try {
-      User.deleteUser(req.body.userId);
+      await User.deleteUser(req.body.userId);
       res.send({success: "We'll miss you...:("});
     } catch(error) {
       res.status(401).send({message: error.message});

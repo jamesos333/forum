@@ -1,3 +1,5 @@
+const Thread = require('../models/post');
+const User = require('../models/user');
 const threads = [
   {
     threadId: 1,
