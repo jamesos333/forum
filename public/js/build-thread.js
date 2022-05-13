@@ -25,13 +25,15 @@ threadImg.addEventListener("click", function (i) {
 fetchData('/threads/getthread/', { id: threadId }, "POST")
   .then((data) => {
     if (!data.message) {
+      document.title += " " + data.title;
       buildPage(data);
     }
   })
   .catch((error) => {
     const errText = error.message;
     document.querySelector("#post-box p.error").innerHTML = errText;
-    console.log(`Error! ${errText}`)
+    console.log(`Error! ${errText}`);
+    window.location.href = "/404";
   });
 
 function buildPage(data) {

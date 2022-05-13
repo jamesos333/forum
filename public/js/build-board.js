@@ -14,12 +14,14 @@ fetchData('/boards/getboard/', { id: boardId }, "POST")
     .then((data) => {
         if (!data.message) {
             document.querySelector("#boardtitle").innerHTML = data.title + ": " + data.body;
+            document.title += " " + data.title;
         }
     })
     .catch((error) => {
         const errText = error.message;
         document.querySelector("#thread-box p.error").innerHTML = errText;
         console.log(`Error! ${errText}`)
+        window.location.href = "/404";
     });
 
 //gets all the threads on the specified board

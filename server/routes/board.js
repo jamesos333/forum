@@ -3,9 +3,9 @@ const Board = require('../models/board');
 const router = express.Router();
 
 router
-    .get('/', (req, res) => {
+    .get('/', async (req, res) => {
         try {
-            const boards = Board.getBoards();
+            const boards = await Board.getBoards();
             res.send(boards);
         } catch (err) {
             res.status(401).send({ message: err.message });
