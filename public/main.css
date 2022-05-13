@@ -14,9 +14,12 @@ body {
 /* the header */
 .header {
     padding-top: 0px;
-    font-size: 40px;
     text-align: left;
     background: rgb(0, 0, 0);
+}
+
+.header img {
+    max-height: 140px;
 }
 
 /* things for the navbar */
@@ -28,24 +31,28 @@ body {
     overflow: auto;
     height: auto;
 }
+
 .navbar a {
     float: left;
     text-align: center;
     padding: 14px 16px;
-    font-size: 17px;
+    font-size: 15px;
     text-align: center;
     padding: 14px;
     color: white;
     text-decoration: none;
 }
+
 .navbar a:hover {
     background-color: rgb(0, 0, 0);
     color: white;
 }
+
 .navbar a.active {
     background-color: black;
     color: white;
 }
+
 .left-links {
     flex: 1 1 200px;
 }
@@ -71,43 +78,64 @@ body {
 
 /* formatting for post images */
 .postimg-thumb {
-    max-width: 400px;
+    max-width: 300px;
+    max-height: 300px;
     height: auto;
-    margin: 5px;
+    margin: 1px;
     filter: saturate(8) grayscale(75%);
 }
+
 .postimg-click {
-    max-width: 1200px;
+    max-width: 800px;
     height: auto;
-    margin: 5px;
+    margin: 2px;
 }
 
 /* card effect for posts */
 .card {
     background-color: rgba(240, 240, 240, 0.842);
-    padding: 20px;
+    padding: 5px 20px 5px;
     margin-top: 20px;
 }
 
-/* for post preivew on forum page */
+/* for boards page layout */
+.boards {
+    text-align: center;
+    float: left;
+    width: 33%;
+    padding: 0px 80px 80px;
+}
+
+.boards img {
+    padding-top: 20px;
+    width: 300px;
+    height: 300px;
+}
+
+/* for post preview on forum page */
 .postcondensed {
     background-color: rgba(240, 240, 240, 0.842);
-    padding: 10px;
-    padding-left: 50px;
+    padding: 5px;
+    padding-left: 25px;
     border: 2px solid black;
     box-shadow: 0px 0px 5px black;
+    width: 98%;
     margin-top: 20px;
 }
-.postcondensed:hover, .topcard:hover, .postbox:hover {
+
+.postcondensed:hover,
+.topcard:hover,
+.postbox:hover,
+.reply:hover {
     border: 3px solid black;
     background-color: rgba(240, 240, 240, 0.95);
 }
 
 /* card on the top of the page (the thread post) */
 .topcard {
-    padding: 20px;
+    padding: 8px 15px 5px;
     margin-top: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
     background-color: rgba(240, 240, 240, 0.842);
     border: 3px solid black;
     box-shadow: 0px 0px 20px red;
@@ -117,16 +145,20 @@ body {
     text-decoration: underline;
 }
 
+.reply {
+    display: inline-block;
+    min-width: 51%;
+    max-width: 97%;
+}
+
 /* smaller centered postbox */
 .postbox {
     background-color: rgba(240, 240, 240, 0.842);
-    padding: 20px;
-    padding-left: 90px;
-    padding-right: 90px;
+    padding: 10px 50px 10px;
     text-align: center;
     margin: 0 auto;
     margin-top: 20px;
-    display: table; 
+    display: table;
 }
 
 .row:after {
@@ -141,8 +173,8 @@ form {
 
 /* footer for all pages */
 .footer {
-    bottom:0;
-    width:100%;
+    bottom: 0;
+    width: 100%;
     padding-top: 20px;
     text-align: center;
     font-size: 12px;
@@ -153,10 +185,11 @@ form {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    table-layout: fixed ;
+    table-layout: fixed;
 }
 
-.centertable td, th {
+.centertable td,
+th {
     text-align: right;
     width: 1px;
 }
@@ -166,15 +199,25 @@ form {
 }
 
 .titletext {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+.titletext h1{
     text-align: center;
-    padding-top: 50px;
-    color: #ffffff;
-    text-decoration: underline;
 }
 
 .postspacing {
     display: flex;
     justify-content: space-between;
+    overflow-wrap: break-word;
     margin-right: 10px;
-    margin-bottom: -20px;
+    margin-bottom: -38px;
+}
+
+textarea {
+    resize: none;
+}
+
+.postspacing>.card h3 {
+    padding-left: 100px;
 }

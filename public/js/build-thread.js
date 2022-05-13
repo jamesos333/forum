@@ -30,7 +30,7 @@ fetchData('/threads/getthread/', { id: threadId }, "POST")
   })
   .catch((error) => {
     const errText = error.message;
-    document.querySelector("#login-form p.error").innerHTML = errText;
+    document.querySelector("#post-box p.error").innerHTML = errText;
     console.log(`Error! ${errText}`)
   });
 
@@ -55,12 +55,12 @@ function buildPage(data) {
   var ids = document.querySelectorAll('[id="post-id"]');
   for (let i = 0; i < titles.length; i++) {
     //adds in the titles and body
-    titles[titles.length - i - 1].innerHTML = replies[i].title;
-    bodies[bodies.length - i - 1].innerHTML = replies[i].body;
+    titles[ i ].innerHTML = replies[i].title;
+    bodies[ i ].innerHTML = replies[i].body;
     // post ids
-    ids[ids.length - i - 1].innerHTML = "#" + replies[i].post_id;
+    ids[ i ].innerHTML = "#" + replies[i].post_id;
     //adds in the username and date line
-    usernames[usernames.length - i - 1].innerHTML = replies[i].user + " | " + replies[i].date;
+    usernames[ i ].innerHTML = replies[i].user + " | " + replies[i].date;
   }
   //console.log(replies);
 }

@@ -4,6 +4,7 @@ const con = require("./db_connect");
 async function createTable() {
   let sql = `CREATE TABLE IF NOT EXISTS threads (
     thread_id INT NOT NULL AUTO_INCREMENT,
+    board_id INT,
     title VARCHAR(255),
     body LONGTEXT,
     user VARCHAR(255),
@@ -22,8 +23,8 @@ let getThreads = async () => {
 
 // makes and returns a new thread
 async function makeThread(thread) {
-  const sql = `INSERT INTO threads (title, body, user, image)
-  VALUES ("${thread.title}", "${thread.body}", "${thread.user.userName}", "${thread.image}")
+  const sql = `INSERT INTO threads (title, body, user, board_id, image)
+  VALUES ("${thread.title}", "${thread.body}", "${thread.user.userName}", "${thread.board_id}", "${thread.image}")
 `;
 
   const insert = await con.query(sql);
@@ -43,6 +44,19 @@ async function getThread(data) {
   const t = await getById(data.body.id);
   t.replies = await getReplies(data.body.id);
   return t;
+}
+
+// get all threads on a board
+async function getAllThreadsOnBoard(data) {
+  let id = data.body.id;
+  let sql;
+  if(id) {
+    sql = `SELECT * FROM threads
+      WHERE board_id = ${id}
+    `;
+  } 
+  //const t = await con.query(sql);
+  return await con.query(sql);
 }
 
 // gets all the replies to a thread by sorting the posts table
@@ -70,4 +84,4 @@ async function getById(id) {
 }
 
 
-module.exports = { getThreads, makeThread, getThread, deleteThread };
+module.exports = { getThreads, makeThread, getThread, getAllThreadsOnBoard, deleteThread };

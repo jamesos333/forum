@@ -7,7 +7,7 @@ const nav = document.querySelector('nav');
 nav.innerHTML = await (await fetch('/elements/navbar.html')).text();
 //gets which tab is current
 var url = window.location.pathname;
-var currentPage = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
+var currentPage = url.substring(url.lastIndexOf('/') + 1, url.length);
 
 // customizes header if user is logged in
 if (getCurrentUser()) {

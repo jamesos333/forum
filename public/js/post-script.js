@@ -9,7 +9,7 @@ if (postBox) postBox.addEventListener('submit', newPost);
 
 //gets the thread number by referencing the url tags
 const urlParams = new URLSearchParams(window.location.search);
-const threadId = urlParams.get('id');
+const id = urlParams.get('id');
 
 const user = getCurrentUser();
 
@@ -19,12 +19,11 @@ async function newThread(e) {
 
   const title = document.getElementById("title").value;
   const body = document.getElementById("body").value;
-  const img = "images/" + await imageUpload();
+  const img = "images/user/" + await imageUpload();
   
-  console.log( img );
   // checks if user is logged in before allowing a thread to be made
   if (user !== null) {
-    fetchData('/threads/newthread', { title: title, body: body, user: user, image: img }, "POST")
+    fetchData('/threads/newthread', { title: title, body: body, user: user, board_id: id, image: img }, "POST")
       .then((data) => {
         if (!data.message) {
           threadBox.reset();
@@ -64,7 +63,7 @@ function newPost(e) {
 
   // checks if user is logged in before allowing a thread to be made
   if (user !== null) {
-    fetchData('/posts/makepost', { title: title, body: body, user: user.userName, thread_id: threadId }, "POST")
+    fetchData('/posts/makepost', { title: title, body: body, user: user.userName, thread_id: id }, "POST")
       .then((data) => {
         if (!data.message) {
           postBox.reset();

@@ -5,7 +5,7 @@ const router = express.Router();
 // multer file storage
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './public/images');
+        cb(null, './public/images/user');
     },
     filename: function (req, file, cb) {
         // gets the file extension
