@@ -1,4 +1,4 @@
-import { fetchData, getData, getCurrentUser, setCurrentUser, removeCurrentUser }
+import { fetchData, getCurrentUser, setCurrentUser, removeCurrentUser }
     from './main.js'
 
 //builds the forum.html page and fills with all current threads

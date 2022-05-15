@@ -25,7 +25,7 @@ let getPosts = async () => {
 // makes a new post
 async function makePost(post) {
     const sql = `INSERT INTO posts (title, body, user, image, thread_id)
-    VALUES ("${post.title}", "${post.body}", "${post.user}", "${"/images/postimagetest2.jpg"}", "${post.thread_id}")
+    VALUES ("${post.title}", "${post.body}", "${post.user}", "${post.image}", "${post.thread_id}")
   `;
 
     const insert = await con.query(sql);

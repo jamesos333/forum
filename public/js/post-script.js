@@ -19,7 +19,7 @@ async function newThread(e) {
 
   const title = document.getElementById("title").value;
   const body = document.getElementById("body").value;
-  const img = "images/user/" + await imageUpload();
+  const img = "images/user/" + await imageUpload( threadBox );
   
   // checks if user is logged in before allowing a thread to be made
   if (user !== null) {
@@ -46,7 +46,7 @@ async function newThread(e) {
 // handles multer image uploads
 async function imageUpload(e) {
   //sends the form data to multer
-  let formData = new FormData(threadBox);
+  let formData = new FormData(e);
   const response = await fetch('http://localhost:3000/upload/', {
     method: 'POST',
     body: formData
@@ -55,15 +55,20 @@ async function imageUpload(e) {
 }
 
 // for making new posts
-function newPost(e) {
+async function newPost(e) {
   e.preventDefault();
 
   const title = document.getElementById("title").value;
   const body = document.getElementById("body").value;
+  var img;
+  // fills in the image if an image is submitted
+  if( document.getElementById("img").value ) {
+    img = "images/user/" + await imageUpload( postBox );
+  }
 
   // checks if user is logged in before allowing a thread to be made
   if (user !== null) {
-    fetchData('/posts/makepost', { title: title, body: body, user: user.userName, thread_id: id }, "POST")
+    fetchData('/posts/makepost', { title: title, body: body, user: user.userName, image: img, thread_id: id }, "POST")
       .then((data) => {
         if (!data.message) {
           postBox.reset();

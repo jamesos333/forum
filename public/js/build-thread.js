@@ -1,4 +1,4 @@
-import { fetchData, getData, getCurrentUser, setCurrentUser, removeCurrentUser }
+import { fetchData, getCurrentUser, setCurrentUser, removeCurrentUser }
   from './main.js'
 
 
@@ -13,12 +13,12 @@ const threadId = urlParams.get('id');
 var threadImg = document.getElementById("thread-image");
 // enlarges main image if clicked on
 threadImg.addEventListener("click", function (i) {
-  if (threadImg.classList.contains("postimg-click")) {
-    threadImg.classList.remove('postimg-click');
+  if (threadImg.classList.contains("threadimg-click")) {
+    threadImg.classList.remove('threadimg-click');
   } else {
-    threadImg.classList.add('postimg-click');
+    threadImg.classList.add('threadimg-click');
   }
-  threadImg.classList.toggle('postimg-thumb');
+  threadImg.classList.toggle('threadimg-thumb');
 });
 
 // gets a specific thread
@@ -53,12 +53,19 @@ function buildPage(data) {
   // fills in each blank post with data
   var titles = document.querySelectorAll('[id="post-title"]');
   var usernames = document.querySelectorAll('[id="post-username"]');
+  var images = document.querySelectorAll('[id="post-img"]');
   var bodies = document.querySelectorAll('[id="post-body"]');
   var ids = document.querySelectorAll('[id="post-id"]');
   for (let i = 0; i < titles.length; i++) {
     //adds in the titles and body
     titles[ i ].innerHTML = replies[i].title;
     bodies[ i ].innerHTML = replies[i].body;
+    // adds in the post images
+    if( replies[i].image != "undefined" ) {
+      images[ i ].src = replies[i].image;
+    } else {
+      images[ i ].outerHTML = '';
+    }
     // post ids
     ids[ i ].innerHTML = "#" + replies[i].post_id;
     //adds in the username and date line
