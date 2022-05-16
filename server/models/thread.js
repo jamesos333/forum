@@ -46,19 +46,6 @@ async function getThread(data) {
   return t;
 }
 
-// get all threads on a board
-async function getAllThreadsOnBoard(data) {
-  let id = data.body.id;
-  let sql;
-  if(id) {
-    sql = `SELECT * FROM threads
-      WHERE board_id = ${id}
-    `;
-  } 
-  //const t = await con.query(sql);
-  return await con.query(sql);
-}
-
 // gets all the replies to a thread by sorting the posts table
 async function getReplies(id) {
   let sql;
@@ -84,4 +71,4 @@ async function getById(id) {
 }
 
 
-module.exports = { getThreads, makeThread, getThread, getAllThreadsOnBoard, deleteThread };
+module.exports = { getThreads, makeThread, getThread, deleteThread };

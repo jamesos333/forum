@@ -10,8 +10,20 @@ async function createTable() {
     CONSTRAINT user_pk PRIMARY KEY(user_id)
   )`;
   await con.query(sql);
+  defaultUsers();
+}
+// creates default admin user
+async function defaultUsers() {
+  const users = ( await getUsers() );
+  if (await users.length == 0) {
+    const sql = `INSERT INTO users (userName, password, email, birthday)
+  VALUES ("admin", "admin", "admin@nextengine.com", "2000-6-23");`;
+  await con.query(sql);
+  }
 }
 createTable();
+
+
 
 let getUsers = async () => {
   const sql = `SELECT * FROM users`;
@@ -20,16 +32,15 @@ let getUsers = async () => {
 
 async function login(username, password) {
   const user = await userExists(username);
-  if(!user[0]) throw Error('User not found')
-  if(user[0].password !== password) throw Error("Password is incorrect");
+  if (!user[0]) throw Error('User not found')
+  if (user[0].password !== password) throw Error("Password is incorrect");
 
-  console.log( user[0] );
   return user[0];
 }
 
 async function register(user) {
   const u = userExists(user.username);
-  if(u.length>0) throw Error("Username already exists");
+  if (u.length > 0) throw Error("Username already exists");
 
   const sql = `INSERT INTO users (userName, password, email, birthday)
     VALUES ("${user.username}", "${user.password}", "${user.email}", "${user.birthday}")
@@ -70,7 +81,7 @@ async function newPassword(user) {
 //gets user by user id
 async function getUser(user) {
   let sql;
-  if(user.userId) {
+  if (user.userId) {
     sql = `SELECT * FROM users
       WHERE user_id = ${user.userId}
     `;

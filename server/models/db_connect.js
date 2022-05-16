@@ -19,7 +19,7 @@ const query = (sql, binding) => {
   });
 };
 
-const createQuery = "CREATE DATABASE IF NOT EXISTS forum_db;";
+const createQuery = 'CREATE DATABASE IF NOT EXISTS forum_db;';
 con.query(createQuery);
 
 module.exports = { con, query };

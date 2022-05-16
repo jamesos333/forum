@@ -21,4 +21,13 @@ router
         }
     })
 
+    .post('/getthreadsonboard', async (req, res) => {
+        try {
+            const threads = await Board.getAllThreadsOnBoard(req);
+            res.send(threads);
+        } catch (err) {
+            res.status(401).send({ message: err.message });
+        }
+    })
+
 module.exports = router;

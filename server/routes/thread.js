@@ -21,15 +21,6 @@ router
         }
     })
 
-    .post('/getthreadsonboard', async (req, res) => {
-        try {
-            const threads = await Thread.getAllThreadsOnBoard(req);
-            res.send(threads);
-        } catch (err) {
-            res.status(401).send({ message: err.message });
-        }
-    })
-
     .post('/newthread', async (req, res) => {
         try {
             const thread = await Thread.makeThread(req.body);

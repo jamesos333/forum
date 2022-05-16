@@ -22,14 +22,19 @@ profile.innerHTML = `
 
 // adds admin controls if admin is logged in
 if (user.userName == "admin") {
-  document.getElementById("admincontrols").innerHTML += `
-    <button class="btn" id="admincontrols">Admin Controls</button>
+  document.getElementById("delete").outerHTML = `
+    <button class="btn" id="admin-controls">Admin Controls</button>
 `;
 }
 
 document.getElementById("edit").addEventListener('click', editProfile);
-document.getElementById("delete").addEventListener('click', deleteAccount);
-document.getElementById("admincontrols").addEventListener('click', adminControls);
+
+// checks weather to attach event listener for delete or for admin
+if (document.getElementById("delete")) {
+  document.getElementById("delete").addEventListener('click', deleteAccount);
+} else {
+  document.getElementById("admin-controls").addEventListener('click', adminControls);
+}
 
 function editProfile() {
   profile.classList.toggle("hide");

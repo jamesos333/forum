@@ -40,6 +40,19 @@ async function getBoard(data) {
   return b[0];
 }
 
+// get all threads on a board
+async function getAllThreadsOnBoard(data) {
+  let id = data.body.id;
+  let sql;
+  if(id) {
+    sql = `SELECT * FROM threads
+      WHERE board_id = ${id}
+    `;
+  } 
+  //const t = await con.query(sql);
+  return await con.query(sql);
+}
+
 async function boardExists(title) {
   const sql = `SELECT * FROM boards
     WHERE title = "${title}"
@@ -59,4 +72,4 @@ async function getById(id) {
   return t;
 }
 
-module.exports = { getBoards, getBoard, boardExists };
+module.exports = { getBoards, getBoard, getAllThreadsOnBoard, boardExists };

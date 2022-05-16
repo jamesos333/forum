@@ -58,4 +58,4 @@ async function getById(id) {
     return p[0];
 }
 
-module.exports = { getPost, makePost, deletePost };
+module.exports = { getPosts, getPost, makePost, deletePost };

@@ -25,7 +25,7 @@ fetchData('/boards/getboard/', { id: boardId }, "POST")
     });
 
 //gets all the threads on the specified board
-fetchData('/threads/getthreadsonboard/', { id: boardId }, "POST")
+fetchData('/boards/getthreadsonboard/', { id: boardId }, "POST")
     .then((data) => {
         if (!data.message) {
             buildThreads(data);
