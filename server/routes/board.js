@@ -21,6 +21,15 @@ router
         }
     })
 
+    .post('/makeboard', async (req, res) => {
+        try {
+            const post = await Board.makeBoard(req.body);
+            res.send({ ...post })
+        } catch (error) {
+            res.status(401).send({ message: error.message });
+        }
+    })
+
     .post('/getthreadsonboard', async (req, res) => {
         try {
             const threads = await Board.getAllThreadsOnBoard(req);

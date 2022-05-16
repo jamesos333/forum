@@ -29,10 +29,21 @@ async function defaultBoards() {
 }
 createTable();
 
+// gets all boards
 let getBoards = async () => {
   const sql = `SELECT * FROM boards`;
   return await con.query(sql);
 };
+
+// makes a new board
+async function makeBoard(board) {
+  const sql = `INSERT INTO boards (title, body, image)
+  VALUES ("${board.title}", "${board.body}", "${board.image}")
+`;
+
+  const insert = await con.query(sql);
+  return insert;
+}
 
 // get board by id object value
 async function getBoard(data) {
@@ -44,15 +55,16 @@ async function getBoard(data) {
 async function getAllThreadsOnBoard(data) {
   let id = data.body.id;
   let sql;
-  if(id) {
+  if (id) {
     sql = `SELECT * FROM threads
       WHERE board_id = ${id}
     `;
-  } 
+  }
   //const t = await con.query(sql);
   return await con.query(sql);
 }
 
+// checks if a board exists
 async function boardExists(title) {
   const sql = `SELECT * FROM boards
     WHERE title = "${title}"
@@ -63,13 +75,13 @@ async function boardExists(title) {
 // gets a thread by its ID and returns the thread
 async function getById(id) {
   let sql;
-  if(id) {
+  if (id) {
     sql = `SELECT * FROM boards
       WHERE board_id = ${id}
     `;
-  } 
+  }
   const t = await con.query(sql);
   return t;
 }
 
-module.exports = { getBoards, getBoard, getAllThreadsOnBoard, boardExists };
+module.exports = { getBoards, getBoard, makeBoard, getAllThreadsOnBoard, boardExists };

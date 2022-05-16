@@ -3,6 +3,7 @@ import { getCurrentUser, setCurrentUser, removeCurrentUser, logout, fetchData }
 
 
 let user = getCurrentUser();
+var boardBox;
 
 if (!user) window.location.href = "login.html";
 
@@ -60,10 +61,37 @@ function adminControls() {
   document.getElementById("deletethreadsubmit").addEventListener('click', deleteThread);
   //activates post delete button
   document.getElementById("deletepostsubmit").addEventListener('click', deletePost);
+  //activates board creation button
+  // form data for the board form
+  boardBox = document.getElementById("board-box");
+  document.getElementById("makeboardsubmit").addEventListener('click', makeBoard);
   // activates cancel button
   document.getElementById("cancel").addEventListener('click', (e) => {
     location.reload();
   })
+}
+
+// creates a new board
+async function makeBoard(e) {
+  e.preventDefault();
+
+  const title = document.getElementById("title").value;
+  const body = document.getElementById("body").value;
+  const img = "images/user/" + await imageUpload(boardBox);
+
+  // creates new board
+  fetchData('/boards/makeboard', { title: title, body: body, image: img }, "POST")
+    .then((data) => {
+      if (!data.message) {
+        boardBox.reset();
+        document.querySelector("p.error").innerHTML = "Board Creation Successful!";
+      }
+    })
+    .catch((error) => {
+      const errText = error.message;
+      document.querySelector("p.error").innerHTML = errText;
+      console.log(`Error! ${errText}`)
+    });
 }
 
 function deleteThread(e) {
@@ -154,4 +182,15 @@ function deleteAccount() {
         console.log(`Error! ${errText}`)
       })
   }
+}
+
+// handles multer image uploads
+async function imageUpload(e) {
+  //sends the form data to multer
+  let formData = new FormData(e);
+  const response = await fetch('http://localhost:3000/upload/', {
+    method: 'POST',
+    body: formData
+  });
+  return await response.text();
 }

@@ -112,16 +112,14 @@ body {
 .boards {
     text-align: center;
     float: left;
-    width: 33%;
+    width: 32%;
     padding: 0% 1% 0%;
 }
 
 .boards img {
     padding-top: 20px;
-    max-width: 200px;
-    max-height: 200px;
-    height: auto;
-    width: auto;
+    width: 200px;
+    height: 200px;
 }
 
 /* for post preview on forum page */
@@ -194,19 +192,18 @@ form {
     margin-bottom: -40px;
 }
 
+/* primarily used for the posting boxes */
 .centertable {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
     table-layout: fixed;
 }
-
 .centertable td,
 th {
     text-align: right;
     width: 1px;
 }
-
 .centertable th {
     text-align: left;
 }
