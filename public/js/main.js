@@ -20,6 +20,8 @@ if (getCurrentUser()) {
 // sets current page to active
 if( document.getElementById(currentPage) !== null ) {
   document.getElementById(currentPage).classList.add('active');
+} else if( !currentPage ) {
+  document.getElementById("home").classList.add('active');
 }
 
 // Fetch method implementation:
