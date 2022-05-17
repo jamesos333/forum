@@ -1,9 +1,9 @@
-NEXTforum - A lightweight, fully featured, and easily customizable forum engine based on NodeJS.
+NEXTengine - A lightweight, fully featured, and easily customizable forum engine based on NodeJS.
 ================================================================================================
 
 About
 ----------
-NEXTforum is a simple but fully featured forum engine powered by NodeJS; designed to be simple, fast, and reliable. All pages are dynamically generated and recieve data using a MySQL database.
+NEXTengine is a simple but fully featured forum engine powered by NodeJS; designed to be simple, fast, and reliable. All pages are dynamically generated and recieve data using a MySQL database.
 
 Screenshots
 ------------
