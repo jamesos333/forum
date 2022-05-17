@@ -5,7 +5,9 @@ About
 ----------
 NEXTforum is a simple but fully featured forum engine powered by NodeJS; designed to be simple, fast, and reliable. All pages are dynamically generated and recieve data using a MySQL database.
 
-### Features
+
+Features
+----------
 - User
   - Users can register using the registration page.
   - Users can also change their username and password using the included profile page.
@@ -24,6 +26,7 @@ NEXTforum is a simple but fully featured forum engine powered by NodeJS; designe
   - Posts and threads can be deleted by the admin using the control panel.
   - New boards can be created using the control panel.
 
+
 Requirements
 ----------------
 1.  NodeJS
@@ -34,10 +37,14 @@ Requirements
 2.  Multer >= 1.4.4
 3.  MySQL2 >= 2.3.3
 
+
 Installation
 ----------------
 1. Download NEXTengine to your desired directory (or use git clone).
 2. Run ```npm install``` within the root directory of the NEXTengine files.
 3. Create an empty MySQL database called ```forum_db```.
-4. Insert your MySQL username and password into the ```.env``` file within the root NEXTengine directory
-5. Use the command ```npm run dev``` to start the server on port 3000;
+4. Insert your MySQL username, password, and database name into the ```.env``` file within the root NEXTengine directory
+5. Use the command ```npm run dev``` to start the server.
+6. It should be active on port 3000 now, the initial admin username and password combination is **admin / admin**.
+
+
