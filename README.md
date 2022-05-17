@@ -24,7 +24,7 @@ Features
   - Users can register using the registration page.
   - Users can also change their username and password using the included profile page.
 - Boards
-  - Boards are subsections of thread that allows for thread categorization based on specific topic.
+  - Boards are subsections of threads that allows for categorization based on specific topics.
   - Admin can add new boards to the site using the control panel.
 - Threads
   - Users can easily create new threads.
