@@ -43,14 +43,11 @@ Requirements
 ----------------
 1.  NodeJS
 2.  MySQL
- 
-### Node JS Plugins
-1.  ExpressJS >= 4.18.1
-2.  Multer >= 1.4.4 *for image uploads*
-3.  MySQL2 >= 2.3.3 *for database access*
+3.  ExpressJS >= 4.18.1
+4.  Multer >= 1.4.4 *for image uploads*
+5.  MySQL2 >= 2.3.3 *for database access*
 
-Utilized Software
------------------------
+## Utilized Software
 - Node.JS
 - HTML / CSS
 - MySQL
