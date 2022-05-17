@@ -45,6 +45,17 @@ Installation
 3. Create an empty MySQL database called ```forum_db```.
 4. Insert your MySQL username, password, and database name into the ```.env``` file within the root NEXTengine directory
 5. Use the command ```npm run dev``` to start the server.
-6. It should be active on port 3000 now, the initial admin username and password combination is **admin / admin**.
+6. NEXTengine should be active on port 3000, the initial admin username and password combination is **admin / admin**.
 
+
+Features to be added
+--------------------------
+- Improved board customization.
+- Ability to ban users.
+- Crossposting (having the same thread on multiple boards).
+
+
+ERD Diagram
+----------------------
+![ERD Diagram](docs/ERdiagramJOS.png "ERD Diagram")
 
