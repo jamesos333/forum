@@ -43,12 +43,18 @@ Requirements
 ----------------
 1.  NodeJS
 2.  MySQL
-3.  
+ 
 ### Node JS Plugins
 1.  ExpressJS >= 4.18.1
-2.  Multer >= 1.4.4
-3.  MySQL2 >= 2.3.3
+2.  Multer >= 1.4.4 *for image uploads*
+3.  MySQL2 >= 2.3.3 *for database access*
 
+Utilized Software
+-----------------------
+- Node.JS
+- HTML / CSS
+- MySQL
+- Visual Studio Code
 
 Installation
 ----------------
@@ -70,4 +76,9 @@ Features to be added
 ERD Diagram
 ----------------------
 ![ERD Diagram](docs/ERdiagramJOS.png "ERD Diagram")
+- User: Stores all of the users and their data.
+- Board: Stores the data for the boards.
+- Thread: Stores threads. Included is the board_id of which board it is contained in.
+- Post: Stores post data, the thread_id is the ID of the thread that contains said post.
+
 
