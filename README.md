@@ -41,8 +41,8 @@ Features
 
 Requirements
 ----------------
-1.  NodeJS
-2.  MySQL
+1.  NodeJS >= 16.14.0
+2.  MySQL >= 8.0.29
 3.  ExpressJS >= 4.18.1
 4.  Multer >= 1.4.4 *for image uploads*
 5.  MySQL2 >= 2.3.3 *for database access*
